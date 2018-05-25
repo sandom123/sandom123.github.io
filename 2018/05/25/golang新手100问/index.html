@@ -1,0 +1,569 @@
+<!DOCTYPE HTML>
+<html lang="">
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="Hexo">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+
+
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+
+<title>golang新手100问 | Hexo</title>
+
+
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+
+
+    <link rel="icon" href="/favicon.ico">
+
+    
+
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.5.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+
+
+
+
+    
+	<div class="hide">
+		<script type="text/javascript">
+			var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+		</script>
+	</div>
+
+
+
+
+
+
+    
+</head>
+
+
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+
+<body>
+    <header class="main-header"  style="background-image:url(http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner2.jpg)"  >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+        	<!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+                 <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+    	</div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                    <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/"><i class="fa "></i>Home</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/前端/"><i class="fa "></i>前端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/后端/"><i class="fa "></i>后端</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/工具/"><i class="fa "></i>工具</a>
+                            </li>
+                        
+                            <li role="presentation" class="text-center">
+                                <a href="/categories/资源/"><i class="fa "></i>资源</a>
+                            </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="golang新手100问">
+            
+	            golang新手100问
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
+        
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/25</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>“小朋友们，在你们学习go语中是否也遇到很多的困惑和不解呢？然后你又是怎么去理解这些概念<br>和恍然大悟的呢？欢迎把你们踩过的坑和发现的惊喜分享给刚入门的其它同学，让他们能够更快的成长起来。”</p>
+</blockquote>
+<p>######1.这里是标题</p>
+<blockquote>
+<p>这里是你的名字：这里是你对问题的解答</p>
+</blockquote>
+<blockquote>
+<p>这里是相关参考资料的url地址</p>
+<p>这里还可以其它人补充回答下</p>
+</blockquote>
+<p>举例：</p>
+<p>######1.go里面 init 函数 是怎么执行的，一个文件里面可不可以定义多个</p>
+<blockquote>
+<p>@回答：go里面每个文件都可以有一个自己的init函数，go的包里面不可以有同名函数，<br>init可以看成一个例外，这个函数的执行顺序是跟据引用的文件深度和文件名顺序执行的，例如 a 引用 b ,b 引用 c，那么c 的init先触发，然后b ，然后a 。同一个文件中可以有多个init函数，但它的执行顺序我们是无法保证的</p>
+</blockquote>
+<blockquote>
+<p>参考资料<br>《go学习笔记》第3版77页</p>
+</blockquote>
+<p>######2. :=的使用域</p>
+<blockquote>
+<p>@回答：:= 结构不能使用在函数外，函数外的每个语法块都必须以关键字开始。<br>如果在函数外使用例如x := 1这样的赋值语句，则会报non-declaration statement outside function body错误，如果在函数外定义赋值，则应该以关键字var开头，var x = 1</p>
+</blockquote>
+<p>######3. 数组（array）和切片（slice）之间指针关系</p>
+<blockquote>
+<p>@回答 在GO中，切片和数组是共用同一个指针，所以对切片的修改相当于数组也被修改了，具体我们看一个例子</p>
+</blockquote>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    array1 := [...]string{&quot;go&quot;, &quot;Python&quot;, &quot;java&quot;, &quot;c&quot;, &quot;c++&quot;, &quot;PHP&quot;}
+
+    slice1 := array1[:4]
+
+    fmt.Printf(&quot;%p\n%p\n&quot;, &amp;array1[0], &amp;slice1[0])    
+    fmt.Println(array1, slice1)
+}
+</code></pre><p>输出的结果为：</p>
+<pre><code>0x2081ca000
+0x2081ca000
+[go Python java c c++ PHP] [go Python java c]
+</code></pre><p>从结果我们可以看出，slice1和array1的地址是一样的，不过array1的长度是6，容量也是6。而slice1的长度是4，容量是6（关于长度和容量的请查看相关文档）我们继续修改代码：</p>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    array1 := [...]string{&quot;go&quot;, &quot;Python&quot;, &quot;java&quot;, &quot;c&quot;, &quot;c++&quot;, &quot;PHP&quot;}
+
+    slice1 := array1[:4]
+
+    slice1 = append(slice1, &quot;Ruby&quot;, &quot;Erlang&quot;)
+
+    fmt.Printf(&quot;%p\n%p\n&quot;, &amp;array1[0], &amp;slice1[0])    
+    fmt.Println(array1, slice1)
+}
+</code></pre><p>输出结果为：</p>
+<pre><code>0x2081ca000
+0x2081ca000
+[go Python java c Ruby Erlang] [go Python java c Ruby Erlang]
+</code></pre><p>当我们对切片slice1做了更改之后，可以看到，array1的结果也被修改了。所以无论从地址，还是从值的结果都可以证明，切片和数组是指向同一个指针的</p>
+<p>######4. 数组语法糖</p>
+<blockquote>
+<p>@回答 在定义数组的时候，可以不指定数组的长度，由Golang去判断，具体定于如下：</p>
+</blockquote>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    //使用三个连续的点&quot;...&quot;来声明让Golang去判断数组的长度，而不用手工指定
+    array1 := [...]string{&quot;go&quot;, &quot;Python&quot;, &quot;java&quot;, &quot;c&quot;, &quot;c++&quot;, &quot;PHP&quot;}
+
+    fmt.Println(array1, len(array1), cap(array1))
+}
+</code></pre><p>######5. 一个切片是一个隐藏数组的引用，并且对于该切片的切片也引用同一个数组。</p>
+<p>######6. 内置函数append的使用小细节</p>
+<blockquote>
+<p>@回答 内置函数append可以向一个切片后追加一个或多个同类型的其他值。如果追加的元素数量超过了原切片容量，那么最后返回的是一个全新数组中的全新切片。如果没有超过，那么最后返回的是原数组中的全新切片。无论如何，append对原切片无任何影响。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import &quot;fmt&quot;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line"></span><br><span class="line">	s0 := []int32&#123;1, 2, 3, 4, 5, 6&#125;</span><br><span class="line">	s1 := s0[:2]</span><br><span class="line">	_ = append(s1, 50, 60, 70, 80, 90)</span><br><span class="line">	fmt.Printf(&quot;s0为：%v\n&quot;, s0)</span><br><span class="line">	fmt.Printf(&quot;s1为：%v\n&quot;, s1)</span><br><span class="line"></span><br><span class="line">	_ = append(s1, 50, 60)</span><br><span class="line">	fmt.Printf(&quot;s0为：%v\n&quot;, s0)</span><br><span class="line">	fmt.Printf(&quot;s1为：%v\n&quot;, s1)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果为：</span><br><span class="line">s0为：[1 2 3 4 5 6]</span><br><span class="line">s1为：[1 2]</span><br><span class="line">s0为：[1 2 50 60 5 6]</span><br><span class="line">s1为：[1 2]</span><br><span class="line">s2为：[1 2 50 60]</span><br></pre></td></tr></table></figure>
+<p>######7. 啥叫类型断言？</p>
+<blockquote>
+<p>@回答：我们习惯了PHP的变量定义可能就忽略了变量类型这个概念，类型转换在程序设计中都是不可避免的问题。当然有一些语言将这个过程给模糊了，大多数时候开发者并不需要去关注这方面的问题。但是golang中的类型匹配是很严格的，不同的类型之间通常需要手动转换，编译器不会代你去做这个事。我之所以说通常需要手动转换，是因为interface类型作为一个特例，会有不同的处理方式。</p>
+<p>注意：接口类型向普通类型转换需要类型断言。</p>
+</blockquote>
+<p>举例：</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+func main() {
+    var val interface{} = &quot;hello&quot;
+    var val2 string
+    //var2 = val 这样是不可以的
+    //var2 = string(val) 这样也不可以
+    var2 = val.(string)
+    fmt.Println(val2)
+}
+</code></pre><p>######8. 如何自定义错误信息？</p>
+<blockquote>
+<p>@回答：预定义的内建接口类型error定义如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">type error interface &#123;</span><br><span class="line">	Error() string</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当用fmt包的多种不同的打印函数输出一个<code>error</code>时，会自动的调用Error()方法。<br>所以自己根据业务实现error接口中的Error()方法即可。如下：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	&quot;fmt&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">type myType int</span><br><span class="line"></span><br><span class="line">func(i myType) Error() string &#123;</span><br><span class="line">	return &quot;my error ...&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func run() error &#123;</span><br><span class="line">	return myType(3)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	if err := run(); err != nil &#123;</span><br><span class="line">		fmt.Println(err)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>######9. Go里面的多态以及类的使用</p>
+<blockquote>
+<p>@回答：下面会列举两个例子来说明Go的多态以及类的使用</p>
+</blockquote>
+<p>1、多态</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+//自定义一个Encipher类型的方法
+type Encipher func(plaintxt string) []byte
+
+//定义一个Encipher类型的b，这里是伪代码，没有实际意义，只是为了让程序能跑起来，证明多态的使用方式，下面的f也是一样
+var b Encipher = func(a string) []byte {
+    _ = a
+
+    c := []byte{&apos;a&apos;, &apos;b&apos;}
+
+    return c
+}
+
+var f Encipher = func(a string) []byte {
+    _ = a
+
+    c := []byte{&apos;c&apos;, &apos;d&apos;}
+
+    return c
+}
+
+//这里应用了go的闭包。GenEncryptionFunc接收一个Encipher类型，返回一个方法
+func GenEncryptionFunc(encrypt Encipher) func(string) string {
+    return func(plaintext string) string {
+        //格式化成16进制
+        return fmt.Sprintf(&quot;%x&quot;, encrypt(plaintext))
+    }
+}
+
+func main() {    
+    //调用方法GenEncryptionFunc，返回d方法，然后用d方法对“hello world”加密
+    var d = GenEncryptionFunc(f)
+    fmt.Println(d(&quot;helo world&quot;))
+}
+</code></pre><p>以上就是Go实现多态的方式</p>
+<p>2、类</p>
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+)
+
+//自定义一个Encipher类型的方法
+type Encipher func(plaintxt string) []byte
+
+//定义一个Encipher类型，将b1方法绑定到Encipher类型上
+func (test Encipher) b1(a string) []byte{
+    _ = a
+
+    c := []byte{&apos;c&apos;, &apos;d&apos;}
+
+    return c
+}
+
+//定义一个Encipher类型，将b1方法绑定到Encipher类型上
+func (test Encipher) f1(a string) []byte {
+    _ = a
+
+    c := []byte{&apos;a&apos;, &apos;b&apos;}
+
+    return c
+}
+
+func main() {
+
+    var a Encipher
+
+    b := a.f1(&quot;hello world&quot;)
+
+    fmt.Printf(&quot;%x\n&quot;, b)
+}
+</code></pre><p> 以类的形式实现上例多态的功能</p>
+<p>######10. 结构体包含“命名结构体类型”和“匿名结构体类型”</p>
+<blockquote>
+<p>@回答 当一个结构体包含“命名结构体类型”时，则相当于中间隔了一层，不能跨越去引用；如果一个结构体包含“匿名结构体类型”时，则相当于匿名结构直接嵌入在同一层面，可以直接调用。</p>
+</blockquote>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/2018/05/25/solr集群安装/" class="pre-post btn btn-default" title='solr集群安装'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">solr集群安装</span>
+        </a>
+    
+    
+        <a href="/2018/05/25/github秘籍/" class="next-post btn btn-default" title='github秘籍'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">github秘籍</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<!--PC和WAP自适应版-->
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+	(function(){var appid='cyt8KmUC1';var conf='prod_855a68d3b3d91855360a6215672a505a';var width=window.innerWidth||document.documentElement.clientWidth;if(width<960){window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='+appid+'&conf='+conf+'"><\/script>');}else{var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+	c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});}})();
+</script>	
+
+    </div>
+
+
+
+
+
+                </main>
+                
+    <aside class="col-md-4 sidebar">
+        
+        
+        
+        
+    <div class="widget">    
+        <h3 class="title">Search</h3>
+        <div id="search-form">
+            <div id="result-mask" class="hide"></div>
+            <div class="search-area">
+                
+                    <input id="search-key" type="search" autocomplete="off" placeholder="搜点什么呢?">
+                    <button type="button" class="search-form-submit" id="search-local">localSearch</button>
+                
+                
+            </div>
+            <div id="result-wrap" class="hide">
+                <div id="search-result"></div>
+            </div>
+            <div class="hide">
+                <template id="search-tpl">
+                    <div class="item">
+                        <a href="/{path}" title="{title}">
+                            <div class="title">{title}</div>
+                            <div class="content">{content}</div>
+                        </a>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget notification">
+        <h3 class="title">网站公告</h3>
+        <div>
+            <p>主题Snippet v1.2.0版本已经上线！欢迎更新~ <br/>
+主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+<hr/>接受贡献，包括不限于提交问题与需求，修复代码。欢迎Pull Request<br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+</p>
+        </div>
+    </div>
+
+        
+        
+    <div class="widget">
+      <h3 class="title">Social</h3> 
+        <div class="content social">
+            
+	            <a href="//github.com/shenliyang" rel="external nofollow" title="Github" target="_blank">
+			    	<i class="git fa fa-git"></i>
+			    </a>
+            
+	            <a href="mailto:snippet@91h5.cc" rel="external nofollow" title="邮箱" target="_blank">
+			    	<i class="envelope-o fa fa-envelope-o"></i>
+			    </a>
+            
+	            <a href="//jq.qq.com/?_wv=1027&k=5Cl8cXO" rel="external nofollow" title="QQ群" target="_blank">
+			    	<i class="users fa fa-users"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="联系QQ" target="_blank">
+			    	<i class="qq fa fa-qq"></i>
+			    </a>
+            
+	            <a href="/" rel="external nofollow" title="微博" target="_blank">
+			    	<i class="weibo fa fa-weibo"></i>
+			    </a>
+            
+	            <a href="/atom.xml" rel="external nofollow" title="RSS" target="_blank">
+			    	<i class="feed fa fa-feed"></i>
+			    </a>
+            
+        </div>
+    </div>
+
+
+        
+        
+
+        
+        
+    <div class="widget">
+      <h3 class="title">Archives</h3>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">May 2018</i></a><span class="archive-list-count">5</span></li></ul>
+    </div>
+
+
+        
+        
+
+        
+        
+    <div class="widget">
+        <h3 class="title">Friends</h3>
+        <div class="content friends-link">
+        
+            <a href="http://www.shenliyang.com" class="fa" target="_blank">个人博客</a>
+        
+        </div>
+    </div>
+
+
+        
+    </aside>
+
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+
+<a id="back-to-top" class="hide">
+	<i class="fa fa-chevron-up"></i>
+</a>
+
+
+
+
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12"> 
+                <span>Copyright &copy; 2017
+                </span> | 
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> | 
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+	<script src="/js/search.js?rev=@@hash"></script>
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+
+
+</body>
+</html>

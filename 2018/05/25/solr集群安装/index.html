@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Archives: 2018 | Hexo</title>
+<title>solr集群安装 | Hexo</title>
 
 
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
@@ -126,45 +126,141 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <div id="main">
-  <div id="post-list">
-    <ul class="archives-post-list">
-    	<h1 class="info">2018年 月</h1>
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="solr集群安装">
+            
+	            solr集群安装
+            
+        </h1>
+        <div class="post-meta">
+    
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/ ">
+             
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+            
+        </span>
+    </span>
+    
+
+    
         
-          <li class="post-items" _href="/2018/05/25/solr集群安装/">
-            <h3 class="post-item-title">
-            	<a href="/2018/05/25/solr集群安装/"> solr集群安装 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/05/25/golang新手100问/">
-            <h3 class="post-item-title">
-            	<a href="/2018/05/25/golang新手100问/"> golang新手100问 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/05/25/github秘籍/">
-            <h3 class="post-item-title">
-            	<a href="/2018/05/25/github秘籍/"> github秘籍 </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/05/25/test/">
-            <h3 class="post-item-title">
-            	<a href="/2018/05/25/test/"> test </a>
-            </h3>  
-          </li>
-        
-          <li class="post-items" _href="/2018/05/25/hello-world/">
-            <h3 class="post-item-title">
-            	<a href="/2018/05/25/hello-world/"> Hello World </a>
-            </h3>  
-          </li>
-        
-    </ul>
-  </div>
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/05/25</span>
+        </span>
+    
 </div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <h1 id="Solr-Cluster-SetUp-With-Tomcat"><a href="#Solr-Cluster-SetUp-With-Tomcat" class="headerlink" title="Solr Cluster SetUp With Tomcat"></a>Solr Cluster SetUp With Tomcat</h1><p>标签（空格分隔）：</p>
+<h2 id="Zookeeper的安装"><a href="#Zookeeper的安装" class="headerlink" title="Zookeeper的安装"></a>Zookeeper的安装</h2><blockquote>
+<p>wget<br><a href="http://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz" target="_blank" rel="noopener">http://mirrors.cnnic.cn/apache/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz</a><br>然后解压到目录:  /data/apps/zookeeper/ 然后编辑conf/zoo.cfg， 设置zookeeper数据存放目录为：<br>/data/zk_data/ 启动zookeeper: bin/zkServer start</p>
+</blockquote>
+<h2 id="Tomcat的安装"><a href="#Tomcat的安装" class="headerlink" title="Tomcat的安装"></a>Tomcat的安装</h2><blockquote>
+<p>wget<br><a href="http://apache.claz.org/tomcat/tomcat-7/v7.0.63/bin/apache-tomcat-7.0.63.tar.gz" target="_blank" rel="noopener">http://apache.claz.org/tomcat/tomcat-7/v7.0.63/bin/apache-tomcat-7.0.63.tar.gz</a><br>然后解压到/data/apps中 编辑文件bin/catalina.sh 在文件的最前面添加如下命令：</p>
+</blockquote>
+<pre><code>JAVA_OPTS=&quot;-Dsolr.solr.home=/data/solr_data/ -DzkHost=zookeeper服务器地址:2181&quot;
+</code></pre><p>在conf/server.xml中的Host节点里面添加如下内容：</p>
+<pre><code>&lt;Context path=&quot;/solr&quot; docBase=&quot;/data/solr_web/&quot; debug=&quot;0&quot;       crossContext=&quot;true&quot; privileged=&quot;true&quot;&gt;
+&lt;Resources className=&quot;org.apache.naming.resources.VirtualDirContext&quot;
+extraResourcePaths=&quot;/WEB-INF/classes=/data/solr_web/WEB-INF/classes&quot;/&gt;
+&lt;Loader className=&quot;org.apache.catalina.loader.VirtualWebappLoader&quot; virtualClasspath=&quot;/data/solr_lib/*.jar&quot; /&gt;&lt;JarScanner scanAllDirectories=&quot;true&quot; /&gt;&lt;/Context&gt;
+</code></pre><p>##Solr Cloud的安装##</p>
+<blockquote>
+<p>wget <a href="http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz" target="_blank" rel="noopener">http://archive.apache.org/dist/lucene/solr/4.6.1/solr-4.6.1.tgz</a><br>然后解压到目录： /data/apps/ copy解压后的所有文件copy到/data/solr_web，<br>同时把里面的WEB-INF/lib目录copy到/data/solr_lib中.<br>另外需要额外下载以下的jar包到/data/solr_lib中： log4j-1.2.17.jar<br>slf4j-log4j12-1.7.6.jar jcl-over-slf4j-1.7.6.jar slf4j-api-1.7.6.jar<br>slf4j-log4j12-1.7.6.jar commons-logging-1.2.jar</p>
+<p>将solr.xml以及zoo.cfg放在/data/solr_data目录下。</p>
+</blockquote>
+<p>#solr.xml</p>
+<pre><code>&lt;solr&gt;
+ &lt;solrcloud&gt;
+    &lt;str name=&quot;host&quot;&gt;localhost&lt;/str&gt;
+    &lt;int name=&quot;hostPort&quot;&gt;8080&lt;/int&gt;
+    &lt;str name=&quot;hostContext&quot;&gt;solr&lt;/str&gt;
+    &lt;int name=&quot;zkClientTimeout&quot;&gt;${zkClientTimeout:15000}&lt;/int&gt;
+    &lt;bool name=&quot;genericCoreNodeNames&quot;&gt;${genericCoreNodeNames:true}&lt;/bool&gt;
+  &lt;/solrcloud&gt;
+
+  &lt;shardHandlerFactory name=&quot;shardHandlerFactory&quot;
+    class=&quot;HttpShardHandlerFactory&quot;&gt;
+    &lt;int name=&quot;socketTimeout&quot;&gt;${socketTimeout:0}&lt;/int&gt;
+    &lt;int name=&quot;connTimeout&quot;&gt;${connTimeout:0}&lt;/int&gt;
+  &lt;/shardHandlerFactory&gt;
+
+&lt;/solr&gt;
+</code></pre><p>#zoo.cfg</p>
+<pre><code># The number of milliseconds of each tick
+tickTime=2000
+# The number of ticks that the initial
+# synchronization phase can take
+initLimit=10
+# The number of ticks that can pass between
+# sending a request and getting an acknowledgement
+syncLimit=5
+
+# the directory where the snapshot is stored.
+# dataDir=/opt/zookeeper/data
+# NOTE: Solr defaults the dataDir to &lt;solrHome&gt;/zoo_data
+
+# the port at which the clients will connect
+# clientPort=2181
+# NOTE: Solr sets this based on zkRun / zkHost params
+
+
+至此.Solr Cluster安装完毕！
+</code></pre>
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/2018/05/25/golang新手100问/" class="next-post btn btn-default" title='golang新手100问'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">golang新手100问</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
+        
+	<!--PC和WAP自适应版-->
+<div id="SOHUCS"></div>
+<script type="text/javascript">
+	(function(){var appid='cyt8KmUC1';var conf='prod_855a68d3b3d91855360a6215672a505a';var width=window.innerWidth||document.documentElement.clientWidth;if(width<960){window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id='+appid+'&conf='+conf+'"><\/script>');}else{var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}
+	c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})});}})();
+</script>	
+
+    </div>
 
 
 
